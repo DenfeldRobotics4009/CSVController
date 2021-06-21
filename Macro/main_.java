@@ -2,11 +2,17 @@ package Macro;
 
 public class main_ {
     public static void main(String args[]){
-        writeCSV csv = new writeCSV("testcsv", null);
-        Object[] objA = {"0",1.0111,"abc"};
-        csv.writeSet(objA);
-
+        CSV_lib csv = new CSV_lib("test", null);
+        
+        int x =0;
+        while (x < 100){
+            try{
+                System.out.println(csv.countDouble(x));
+            }catch(Error e){e.printStackTrace();}
+            x = x + 1;
+        }
         csv.close();
+
     }
 
 }
