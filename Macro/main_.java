@@ -6,9 +6,7 @@ public class main_ {
         
         int x =0;
         while (x < 100){
-            try{
-                System.out.println(csv.countDouble(x));
-            }catch(Error e){e.printStackTrace();}
+            System.out.println(csv.countDouble(x, 0.0));
             x = x + 1;
         }
         csv.close();

@@ -43,8 +43,8 @@ public class CSV_lib {
     }
 
     /**
-     * Writes the given Object[] into the csv file, seperates each variable with a
-     * ','
+     * Writes the given Object[] into the csv file, seperates 
+     * each variable with an ','
      * 
      * @param dat String[] of
      */
@@ -127,11 +127,13 @@ public class CSV_lib {
      * This module will ignore all datapoints that are not doubles.
      * @param n the number given to the module that states what datapoint
      * to return
+     * @param default_ the number to return if too high of a number is given
+     * from n (Generally should be 0.0)
      * @return the datapoint in that location, ie; if the csv has 3 rows 
      * and 3 columns, giving a # 4 will give the datapoint at x=1 y=1
      * (keep in mind you count from 0)
      */
-    public Double countDouble(int n) {
+    public Double countDouble(int n, Double default_) {
 
         String[][] file = CSVContent();
         int m = 0;
@@ -141,7 +143,12 @@ public class CSV_lib {
                 n = n - i.length;
             }
         }
-        return Double.parseDouble(file[m][n]);
+
+        try {
+            return Double.parseDouble(file[m][n]);
+        }catch(ArrayIndexOutOfBoundsException e){
+            return default_;
+        }
     }
 
     /** 
